@@ -2,7 +2,7 @@
 module.exports = function(grunt) {
 
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
-
+  grunt.loadNpmTasks('grunt-mocha');
 
   grunt.initConfig({
     pkg: grunt.file.readJSON('package.json'),
@@ -70,7 +70,17 @@ module.exports = function(grunt) {
         files: ['assets/**/*', '*.css', 'images/**/*', 'img/**/*', '!Gruntfile.js'],
         tasks: ['copy'],
       }
+    },
+
+    mocha: {
+      test: {
+        src: ['test/browser/*.html'],
+        options: {
+          run: true,
+        },
+      },
     }
+
   });
 
   //require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
@@ -78,5 +88,6 @@ module.exports = function(grunt) {
   grunt.registerTask('default', ['jshint', 'clean', 'browserify', 'copy']);
   grunt.registerTask('server', ['default', 'connect', 'watch']);
   grunt.registerTask('build', ['clean', 'browserify', 'copy']);
+  grunt.registerTask('test', ['mocha']);
 
 };
