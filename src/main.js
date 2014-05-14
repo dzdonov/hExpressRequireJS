@@ -1,6 +1,11 @@
-var $ = require('jquery');
-var Post = require('./post');
 
-var how_to_browserify = new Post("How to use browserify");
+define(['jquery'], function($) {
+   $('body').append('</br> Hello World from Require.js');
+ });
 
-$('body').append('<h2>' + how_to_browserify.title + '</h2>');
+// var $ = require('jquery');
+// var Post = require('./post');
+//
+// var how_to_browserify = new Post("How to use browserify");
+//
+// $('body').append('<h2>' + how_to_browserify.title + '</h2>');
